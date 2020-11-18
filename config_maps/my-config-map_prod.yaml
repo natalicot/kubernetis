@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config-map
+  labels:
+    {{- include "echo.labels" . | nindent 4 }}
+  namespace: prod
+data:
+  PORT: '3000'
+  LOGLEVEL: 'debug'
+  PERSIST: 'true'
+  MONGODBURL:  'mongodb://mongodb-0.mongodb,mongodb-1.mongodb,mongodb-2.mongodb:27017/echo?authSource=admin'
+  DBNAME: 'echo'
+
+
